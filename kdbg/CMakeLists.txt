@@ -80,7 +80,7 @@ set(kdbg_UI
 
 qt5_wrap_ui(kdbg_SRCS ${kdbg_UI})
 
-file(GLOB AppIcons "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-app-kdbg.png")
+file(GLOB AppIcons "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-kdbg.png")
 ecm_add_app_icon(kdbg_SRCS ICONS ${AppIcons})
 add_executable(kdbg ${kdbg_SRCS})
 
