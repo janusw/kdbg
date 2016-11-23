@@ -8,7 +8,7 @@
 #include <QHeaderView>
 #include <QMouseEvent>
 #include <QList>
-#include <klocale.h>
+#include <klocalizedstring.h>
 #include <kconfigbase.h>
 #include <kconfiggroup.h>
 #include "debugger.h"

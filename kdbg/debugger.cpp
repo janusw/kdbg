@@ -13,9 +13,10 @@
 #include <QFileInfo>
 #include <QListWidget>
 #include <QApplication>
-#include <kcodecs.h>			// KMD5
+#include <kmd5.h>
 #include <kconfig.h>
-#include <klocale.h>			/* i18n */
+#include <KConfigGroup>
+#include <klocalizedstring.h>		/* i18n */
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <ctype.h>

@@ -11,6 +11,7 @@
 #include <QEvent>
 #include <vector>
 
+#include "dbgdriver.h"
 #include "ui_brkptbase.h"
 
 class KDebugger;

@@ -8,8 +8,8 @@
 #include <QSocketNotifier>
 #include <QContextMenuEvent>
 #include <QMenu>
-#include <kglobalsettings.h>
-#include <klocale.h>
+#include <QFontDatabase>
+#include <klocalizedstring.h>
 
 #include "config.h"
 #include <fcntl.h>
@@ -136,7 +136,7 @@ TTYWindow::TTYWindow(QWidget* parent) :
 	m_tty(0),
 	m_pos(document())
 {
-    setFont(KGlobalSettings::fixedFont());
+    setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     setReadOnly(true);
     setWordWrapMode(QTextOption::NoWrap);
     setUndoRedoEnabled(false);

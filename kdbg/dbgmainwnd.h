@@ -10,6 +10,7 @@
 #include <QPointer>
 #include <QTimer>
 #include <kxmlguiwindow.h>
+#include <kcolorscheme.h>
 #include "regwnd.h"
 
 class QDockWidget;
@@ -185,7 +186,7 @@ public slots:
     void slotEnaDisBreak(const QString&, int, const DbgAddr&);
     void slotProgramStopped();
     void slotBackTimer();
-    void slotRecentExec(const KUrl& url);
+    void slotRecentExec(const QUrl& url);
     void slotLocalsPopup(const QPoint& pt);
     void slotLocalsToWatch();
     void slotEditValue();

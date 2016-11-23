@@ -305,7 +305,7 @@
     </widget>
    </item>
    <item>
-    <widget class="KDialogButtonBox" name="kdialogbuttonbox" >
+    <widget class="QDialogButtonBox" name="qdialogbuttonbox" >
      <property name="standardButtons" >
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
@@ -317,9 +317,8 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>KDialogButtonBox</class>
-   <extends>QDialogButtonBox</extends>
-   <header>kdialogbuttonbox.h</header>
+   <class>QDialogButtonBox</class>
+   <header>qdialogbuttonbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -338,7 +337,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>kdialogbuttonbox</sender>
+   <sender>qdialogbuttonbox</sender>
    <signal>accepted()</signal>
    <receiver>PgmArgsBase</receiver>
    <slot>accept()</slot>
@@ -354,7 +353,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>kdialogbuttonbox</sender>
+   <sender>qdialogbuttonbox</sender>
    <signal>rejected()</signal>
    <receiver>PgmArgsBase</receiver>
    <slot>reject()</slot>

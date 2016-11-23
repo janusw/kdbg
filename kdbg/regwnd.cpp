@@ -6,13 +6,13 @@
 
 #include "regwnd.h"
 #include "dbgdriver.h"
-#include <kglobalsettings.h>
-#include <klocale.h>			/* i18n */
+#include <klocalizedstring.h>			/* i18n */
 #include <QMenu>
 #include <QRegExp>
 #include <QStringList>
 #include <QHeaderView>
 #include <QContextMenuEvent>
+#include <QFontDatabase>
 #include <stdlib.h>			/* strtoul */
 
 /** 
@@ -412,7 +412,7 @@ void RegisterViewItem::setMode(RegisterDisplay mode)
 RegisterView::RegisterView(QWidget* parent) :
 	QTreeWidget(parent)
 {
-    setFont(KGlobalSettings::fixedFont());
+    setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 
     QTreeWidgetItem* header = headerItem();
     header->setText(0, i18n("Register"));
@@ -606,7 +606,7 @@ void RegisterView::slotModeChange(QAction* action)
 
 void RegisterView::paletteChange(const QPalette&)
 {
-    setFont(KGlobalSettings::fixedFont());
+    setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 }
 
 #include "regwnd.moc"

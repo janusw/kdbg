@@ -5,14 +5,14 @@
  */
 
 #include "pgmsettings.h"
-#include <klocale.h>			/* i18n */
-#include <kglobal.h>
+#include <klocalizedstring.h>			/* i18n */
 #include <QFileInfo>
 #include <QLineEdit>
 #include <QLabel>
 #include <QRadioButton>
 #include <QButtonGroup>
 #include <QVBoxLayout>
+#include <QGuiApplication>
 #include "mydebug.h"
 
 
@@ -100,9 +100,9 @@ ProgramSettings::ProgramSettings(QWidget* parent, QString exeName) :
 {
     // construct title
     QFileInfo fi(exeName);
-    QString cap = KGlobal::caption();
+    QString cap = QGuiApplication::applicationDisplayName();
     QString title = i18n("%1: Settings for %2");
-    setCaption(title.arg(cap, fi.fileName()));
+    setWindowTitle(title.arg(cap, fi.fileName()));
 
     addPage(&m_chooseDriver, i18n("Debugger"));
     addPage(&m_output, i18n("Output"));

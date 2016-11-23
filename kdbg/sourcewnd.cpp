@@ -15,8 +15,8 @@
 #include <QContextMenuEvent>
 #include <QKeyEvent>
 #include <QMouseEvent>
+#include <QFontDatabase>
 #include <kiconloader.h>
-#include <kglobalsettings.h>
 #include <kxmlguiwindow.h>
 #include <kxmlguifactory.h>
 #include <algorithm>
@@ -40,7 +40,7 @@ SourceWindow::SourceWindow(const QString& fileName, QWidget* parent) :
     m_brktmp = UserIcon("brktmp");
     m_brkcond = UserIcon("brkcond");
     m_brkorph = UserIcon("brkorph");
-    setFont(KGlobalSettings::fixedFont());
+    setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     setReadOnly(true);
     setViewportMargins(lineInfoAreaWidth(), 0, 0 ,0);
     setWordWrapMode(QTextOption::NoWrap);
@@ -505,10 +505,12 @@ bool SourceWindow::wordAtPoint(const QPoint& p, QString& word, QRect& r)
     return true;
 }
 
-void SourceWindow::paletteChange(const QPalette& oldPal)
+void SourceWindow::changeEvent(QEvent * event)
 {
-    setFont(KGlobalSettings::fixedFont());
-    QPlainTextEdit::paletteChange(oldPal);
+    if (event->type() ==  QEvent::PaletteChange)
+	setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+
+    QPlainTextEdit::changeEvent(event);
 }
 
 /*

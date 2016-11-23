@@ -9,7 +9,7 @@
 #include <QFileInfo>
 #include <QRegExp>
 #include <QStringList>
-#include <klocale.h>            /* i18n */
+#include <klocalizedstring.h>            /* i18n */
 #include <ctype.h>
 #include <signal.h>
 #include <stdlib.h>             /* strtol, atoi */
@@ -108,7 +108,7 @@ static XsldbgCmdInfo cmds[] = {
 XsldbgDriver::XsldbgDriver():
 	DebuggerDriver()
 {
-    m_haveDataFile = FALSE;
+    m_haveDataFile = false;
 
 #ifndef NDEBUG
     // check command info array
