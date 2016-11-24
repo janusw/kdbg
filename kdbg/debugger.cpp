@@ -14,11 +14,11 @@
 #include <QListWidget>
 #include <QApplication>
 #include <QCryptographicHash>
+#include <QStandardPaths>
 #include <kconfig.h>
 #include <KConfigGroup>
 #include <klocalizedstring.h>		/* i18n */
 #include <kmessagebox.h>
-#include <kstandarddirs.h>
 #include <ctype.h>
 #include <stdlib.h>			/* strtol, atoi */
 #include <unistd.h>			/* sleep(3) */
@@ -725,7 +725,7 @@ QString KDebugger::getConfigForExe(const QString& name)
     QString hash = md5.result().toBase64();
     hash.replace('/', QString());	// avoid directory separators
     QString pgmConfigFile = hash.left(15) + "-" + fi.fileName();
-    pgmConfigFile = KStandardDirs::locateLocal("sessions", pgmConfigFile);
+    pgmConfigFile = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/kdbg/sessions/" + pgmConfigFile;
     TRACE("program config file = " + pgmConfigFile);
     return pgmConfigFile;
 }

@@ -6,8 +6,7 @@
 
 #include "typetable.h"
 #include <QFileInfo>
-#include <kglobal.h>
-#include <kstandarddirs.h>
+#include <QStandardPaths>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <list>
@@ -37,9 +36,8 @@ void TypeTable::loadTypeTables()
 {
     typeTablesInited = true;
 
-    const QStringList files = KGlobal::dirs()->findAllResources("types", "*.kdbgtt",
-			KStandardDirs::NoDuplicates);
-    
+    const QStringList files = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "kdbg/types/*.kdbgtt");
+
     if (files.isEmpty()) {
 	TRACE("no type tables found");
 	return;

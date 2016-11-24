@@ -6,8 +6,6 @@
 
 #include <klocalizedstring.h>			/* i18n */
 #include <kmessagebox.h>
-#include <kglobal.h>
-#include <kstandarddirs.h>
 #include <kaboutdata.h>
 #include <QApplication>
 #include <QCommandLineParser>
@@ -57,9 +55,6 @@ int main(int argc, char** argv)
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-
-    KGlobal::dirs()->addResourceType("types", "data", "kdbg/types");
-    KGlobal::dirs()->addResourceType("sessions", "data", "kdbg/sessions");
 
     DebuggerMainWnd* debugger = new DebuggerMainWnd;
     debugger->setObjectName("mainwindow");
