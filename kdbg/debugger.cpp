@@ -13,7 +13,7 @@
 #include <QFileInfo>
 #include <QListWidget>
 #include <QApplication>
-#include <kmd5.h>
+#include <QCryptographicHash>
 #include <kconfig.h>
 #include <KConfigGroup>
 #include <klocalizedstring.h>		/* i18n */
@@ -720,7 +720,9 @@ QString KDebugger::getConfigForExe(const QString& name)
     // a hash of the directory, followed by the program name.
     // Assume that the first 15 positions of the hash are unique;
     // this keeps the file names short.
-    QString hash = KMD5(dir.toUtf8()).base64Digest();
+    QCryptographicHash md5(QCryptographicHash::Md5);
+    md5.addData(dir.toUtf8());
+    QString hash = md5.result().toBase64();
     hash.replace('/', QString());	// avoid directory separators
     QString pgmConfigFile = hash.left(15) + "-" + fi.fileName();
     pgmConfigFile = KStandardDirs::locateLocal("sessions", pgmConfigFile);
