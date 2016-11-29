@@ -270,11 +270,12 @@ void DebuggerMainWnd::initKAction()
     KStandardAction::keyBindings(this, SLOT(slotConfigureKeys()), actionCollection());
     KStandardAction::showStatusbar(this, SLOT(slotViewStatusbar()), actionCollection());
 
-    // view menu
+    // edit menu
     m_findAction = KStandardAction::find(m_filesWindow, SLOT(slotViewFind()), actionCollection());
     KStandardAction::findNext(m_filesWindow, SLOT(slotFindForward()), actionCollection());
     KStandardAction::findPrev(m_filesWindow, SLOT(slotFindBackward()), actionCollection());
 
+    // view menu
     i18n("Source &code");
     struct { QString text; QWidget* w; QString id; QAction** act; } dw[] = {
 	{ i18n("Stac&k"), m_btWindow, "view_stack", &m_btWindowAction },
@@ -290,7 +291,7 @@ void DebuggerMainWnd::initKAction()
 	QDockWidget* d = dockParent(dw[i].w);
 	*dw[i].act = new KToggleAction(dw[i].text, actionCollection());
 	actionCollection()->addAction(dw[i].id, *dw[i].act);
-	connect(*dw[i].act, SIGNAL(triggered()), d, SLOT(show()));
+	connect(*dw[i].act, SIGNAL(toggled(bool)), d, SLOT(setVisible(bool)));
     }
 
     // execution menu
