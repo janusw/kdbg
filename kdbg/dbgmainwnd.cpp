@@ -32,7 +32,6 @@
 #include <QFileDialog>
 #include "dbgmainwnd.h"
 #include "debugger.h"
-#include "commandids.h"
 #include "winstack.h"
 #include "brkpt.h"
 #include "threadlist.h"
@@ -371,11 +370,11 @@ void DebuggerMainWnd::initAnimation()
 
 void DebuggerMainWnd::initStatusBar()
 {
-// TODO: finish porting statusBar(), here and in other places in this file
-//     KStatusBar* statusbar = statusBar();
-//     statusbar->insertItem(m_statusActive, ID_STATUS_ACTIVE);
-//     m_lastActiveStatusText = m_statusActive;
-//     statusbar->insertItem("", ID_STATUS_MSG);	/* message pane */
+    QStatusBar* statusbar = statusBar();
+
+    m_lastActiveStatusText = m_statusActive;
+    m_statusMsg = "";
+    statusbar->showMessage(m_lastActiveStatusText + " | " + m_statusMsg);
 
     // reserve some translations
     i18n("Restart");
@@ -543,8 +542,8 @@ void DebuggerMainWnd::updateUI()
     if (m_debugger->isProgramActive())
 	newStatus = m_statusActive;
     if (newStatus != m_lastActiveStatusText) {
-// 	statusBar()->changeItem(newStatus, ID_STATUS_ACTIVE);
 	m_lastActiveStatusText = newStatus;
+	statusBar()->showMessage(m_lastActiveStatusText + " | " + m_statusMsg);
     }
 }
 
@@ -816,8 +815,8 @@ void DebuggerMainWnd::setAttachPid(const QString& pid)
 
 void DebuggerMainWnd::slotNewStatusMsg()
 {
-    QString msg = m_debugger->statusMessage();
-//     statusBar()->changeItem(msg, ID_STATUS_MSG);
+    m_statusMsg = m_debugger->statusMessage();
+    statusBar()->showMessage(m_lastActiveStatusText + " | " + m_statusMsg);
 }
 
 void DebuggerMainWnd::slotFileGlobalSettings()

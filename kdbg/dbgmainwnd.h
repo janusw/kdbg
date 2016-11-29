@@ -166,6 +166,7 @@ protected:
     // we store the last string that we put there
     QPointer<KAnimatedButton> m_animation;
     QString m_lastActiveStatusText;
+    QString m_statusMsg;
     bool m_animRunning;
 
     // statusbar texts
