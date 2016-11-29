@@ -19,7 +19,6 @@
 #include "dbgdriver.h"
 #include <ctype.h>
 #include <list>
-#include "mydebug.h"
 
 #include "ui_brkptcondition.h"
 

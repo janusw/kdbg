@@ -7,7 +7,6 @@
 #include "pgmargs.h"
 #include <qfiledialog.h>
 #include <klocalizedstring.h>			/* i18n */
-#include "mydebug.h"
 
 PgmArgs::PgmArgs(QWidget* parent, const QString& pgm,
 		 const std::map<QString,QString>& envVars,

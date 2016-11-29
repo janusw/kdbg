@@ -27,8 +27,6 @@
 #endif
 #include <errno.h>
 
-#include "mydebug.h"
-
 
 STTY::STTY() :
 	QObject(),
