@@ -4,7 +4,6 @@
  * See the file COPYING in the toplevel directory of the source directory.
  */
 
-#include <kapplication.h>
 #include <klocalizedstring.h>			/* i18n */
 #include <kmessagebox.h>
 #include <kconfig.h>
@@ -19,10 +18,10 @@
 #include <kanimatedbutton.h>
 #include <kwindowsystem.h>
 #include <ktoolbar.h>
-
 #include <kxmlguifactory.h>
 #include <kconfiggroup.h>
 #include <KPageDialog>
+
 #include <QListWidget>
 #include <QFile>
 #include <QFileInfo>
@@ -30,6 +29,8 @@
 #include <QDockWidget>
 #include <QProcess>
 #include <QFileDialog>
+#include <QApplication>
+
 #include "dbgmainwnd.h"
 #include "debugger.h"
 #include "winstack.h"
@@ -259,7 +260,7 @@ void DebuggerMainWnd::initKAction()
     m_recentExecAction->setText(i18n("Recent E&xecutables"));
     m_coreDumpAction = createAction(i18n("&Core dump..."), 0,
 			this, SLOT(slotFileCore()), "file_core_dump");
-    KStandardAction::quit(kapp, SLOT(closeAllWindows()), actionCollection());
+    KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
 
     // settings menu
     m_settingsAction = createAction(i18n("This &Program..."), 0,
@@ -1111,7 +1112,7 @@ void DebuggerMainWnd::slotLocalsToWatch()
 void DebuggerMainWnd::slotEditValue()
 {
     // does one of the value trees have the focus
-    QWidget* f = kapp->focusWidget();
+    QWidget* f = qApp->focusWidget();
     ExprWnd* wnd;
     if (f == m_localVariables) {
 	wnd = m_localVariables;
