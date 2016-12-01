@@ -7,12 +7,8 @@
 #include <klocalizedstring.h>			/* i18n */
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <kstatusbar.h>
 #include <kstandardaction.h>
-#include <kstandardshortcut.h>
-#include <kaction.h>
 #include <kactioncollection.h>
-#include <krecentfilesaction.h>
 #include <ktoggleaction.h>
 #include <kshortcutsdialog.h>
 #include <kanimatedbutton.h>
@@ -30,6 +26,7 @@
 #include <QProcess>
 #include <QFileDialog>
 #include <QApplication>
+#include <QStatusBar>
 
 #include "dbgmainwnd.h"
 #include "debugger.h"

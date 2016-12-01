@@ -9,7 +9,6 @@
 #include <QProcess>
 #include <QTreeWidget>
 #include <ctype.h>
-#include <kiconloader.h>
 #include <klocalizedstring.h>			/* i18n */
 #include "config.h"
 
